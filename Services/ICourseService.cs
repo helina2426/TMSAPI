@@ -1,14 +1,14 @@
-using TmsApi.Entities;
+using TmsApi.Dtos;
 
 namespace TmsApi.Services;
 
 public interface ICourseService
 {
-    Task<Course?> GetByIdAsync(
+    Task<CourseResponseDto?> GetByIdAsync(
         int id,
         CancellationToken ct);
 
-    Task<Course> CreateAsync(
-        Course course,
+    Task<CourseResponseDto> CreateAsync(
+        CreateCourseRequest request,
         CancellationToken ct);
 }
