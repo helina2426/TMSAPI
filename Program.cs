@@ -20,11 +20,13 @@ builder.Host.UseDefaultServiceProvider(options =>
 
 builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
 
-builder.Services
+builder.Services.AddScoped<ICourseService, CourseService>();
+
+/*builder.Services
     .AddOptions<PaymentOptions>()
     .BindConfiguration("Payments")
     .ValidateDataAnnotations()
-    .ValidateOnStart();
+    .ValidateOnStart();*/
 
 builder.Services.AddDbContext<TmsDbContext>(options =>
     options.UseNpgsql(
@@ -56,6 +58,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseExceptionHandler();
 
+app.UseStatusCodePages();
+
 app.UseMiddleware<RequestLoggingMiddleware>();
 
 app.UseHttpsRedirection();
@@ -65,7 +69,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/api/assessments/results", () =>
+/*app.MapGet("/api/assessments/results", () =>
 {
     return Results.Ok(new
  {
@@ -73,12 +77,12 @@ app.MapGet("/api/assessments/results", () =>
       studentId = "S-001",
       letterGrade = "A"
     });
-}).RequireAuthorization();
+}).RequireAuthorization();*/
 
- app.MapGet("/api/error", () =>
+ /*app.MapGet("/api/error", () =>
 {
     throw new Exception("Test exception for ProblemDetails");
- });
+ });*/
 
 // Seeder goes here
 
@@ -145,21 +149,21 @@ using (var scope = app.Services.CreateScope())
             {
                 Code = "CS-101",
                 Title = "Introduction to Computer Science",
-                Capacity = 30
+                MaxCapacity = 30
             },
 
             new()
             {
                 Code = "CS-201",
                 Title = "Data Structures and Algorithms",
-                Capacity = 25
+                MaxCapacity = 25
             },
 
             new()
             {
                 Code = "MAT-101",
                 Title = "Calculus I",
-                Capacity = 40
+                MaxCapacity = 40
             }
         };
 
