@@ -27,6 +27,75 @@ public class CourseService(
     .FirstOrDefaultAsync(ct);
     }
 
+    public async Task<PagedResponse<CourseResponseDto>> GetPagedAsync(
+    PagedRequest request,
+    CancellationToken ct)
+{
+    var query = context.Courses
+        .AsNoTracking();
+
+    // Search
+    if (!string.IsNullOrWhiteSpace(request.Search))
+    {
+        var search = request.Search.Trim();
+
+        query = query.Where(c =>
+            c.Code.Contains(search) ||
+            c.Title.Contains(search));
+    }
+
+    // Ordering
+    query = request.OrderBy.ToLowerInvariant() switch
+    {
+        "code" => request.Descending
+            ? query.OrderByDescending(c => c.Code)
+            : query.OrderBy(c => c.Code),
+
+        "title" => request.Descending
+            ? query.OrderByDescending(c => c.Title)
+            : query.OrderBy(c => c.Title),
+
+        "maxcapacity" => request.Descending
+            ? query.OrderByDescending(c => c.MaxCapacity)
+            : query.OrderBy(c => c.MaxCapacity),
+
+        _ => request.Descending
+            ? query.OrderByDescending(c => c.Title)
+            : query.OrderBy(c => c.Title)
+    };
+
+    // Total count before pagination
+    var totalCount = await query.CountAsync(ct);
+
+    // Pagination
+    var items = await query
+        .Skip((request.Page - 1) * request.PageSize)
+        .Take(request.PageSize)
+        .Select(c => new CourseResponseDto(
+            c.Id,
+            c.Code,
+            c.Title,
+            c.MaxCapacity,
+            c.Enrollments.Count))
+        .ToListAsync(ct);
+
+    return new PagedResponse<CourseResponseDto>
+    {
+        Items = items,
+        TotalCount = totalCount,
+        Page = request.Page,
+        PageSize = request.PageSize
+    };
+}
+
+    public async Task<bool> CodeExistsAsync(
+    string code,
+    CancellationToken ct)
+{
+    return await context.Courses
+        .AnyAsync(c => c.Code == code, ct);
+}
+
     public async Task<CourseResponseDto> CreateAsync(
     CreateCourseRequest request,
     CancellationToken ct)

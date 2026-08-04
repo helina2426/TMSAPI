@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using TmsApi.Data;
 using Microsoft.Extensions.Logging;
 using TmsApi.Entities;
+using TmsApi.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,10 @@ builder.Services.AddDbContext<TmsDbContext>(options =>
     .LogTo(Console.WriteLine, LogLevel.Information)
     .EnableSensitiveDataLogging());
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<AuditFilter>();
+});
 
 builder.Services.AddOpenApi();
 
@@ -86,7 +90,7 @@ app.MapControllers();
 
 // Seeder goes here
 
-using (var scope = app.Services.CreateScope())
+/*using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider
         .GetRequiredService<TmsDbContext>();
@@ -210,6 +214,16 @@ using (var scope = app.Services.CreateScope())
 
         context.SaveChanges();
     }
+}
+*/
+if (app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+
+    var context = scope.ServiceProvider
+        .GetRequiredService<TmsDbContext>();
+
+    await DataSeeder.SeedAsync(context);
 }
 
 app.Run();
