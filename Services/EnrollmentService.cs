@@ -19,10 +19,10 @@ public class EnrollmentService(
             .AsNoTracking()
             .Where(e => e.CourseId == courseId && e.Id == id)
             .Select(e => new EnrollmentResponseDto(
-                e.Id,
-                e.StudentId,
-                e.CourseId,
-                e.EnrolledAt))
+               e.Id,
+e.CourseId,
+e.StudentId,
+e.EnrolledAt))
             .FirstOrDefaultAsync(ct);
     }
 
@@ -32,11 +32,11 @@ public class EnrollmentService(
         CancellationToken ct)
     {
         var enrollment = new Enrollment
-        {
-            StudentId = request.StudentId,
-            CourseId = courseId
-        };
-
+{
+    StudentId = request.StudentId,
+    CourseId = courseId,
+    EnrolledAt = DateTime.UtcNow
+};
         context.Enrollments.Add(enrollment);
 
         await context.SaveChangesAsync(ct);
@@ -48,5 +48,20 @@ public class EnrollmentService(
             enrollment.CourseId);
 
         return (await GetByIdAsync(courseId, enrollment.Id, ct))!;
+    }
+
+    public async Task<IReadOnlyList<EnrollmentResponseDto>> GetByCourseAsync(
+        int courseId,
+        CancellationToken ct)
+    {
+        return await context.Enrollments
+            .AsNoTracking()
+            .Where(e => e.CourseId == courseId)
+            .Select(e => new EnrollmentResponseDto(
+    e.Id,
+    e.CourseId,
+    e.StudentId,
+    e.EnrolledAt))
+            .ToListAsync(ct);
     }
 }
