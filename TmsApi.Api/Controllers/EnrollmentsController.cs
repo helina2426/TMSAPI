@@ -51,7 +51,7 @@ public async Task<IActionResult> GetEnrollments(
     return Ok(enrollments);
 }
 
-    [HttpPost]
+   /* [HttpPost]
     [ProducesResponseType(typeof(EnrollmentResponseDto), StatusCodes.Status201Created)]
 [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
 [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
@@ -90,5 +90,5 @@ public async Task<IActionResult> GetEnrollments(
             nameof(GetEnrollment),
             new { courseId, id = enrollment.Id },
             enrollment);
-    }
+    }*/
 }

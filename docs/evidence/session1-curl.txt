@@ -1,0 +1,478 @@
+=== TMS API — Module 7 Session 1 Evidence ===
+
+
+============================================================
+VERSIONING CROSS-CHECK
+============================================================
+
+
+=== V1 Courses — GET /api/v1/courses ===
+
+curl -i "http://localhost:5103/api/v1/courses"
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Fri, 14 Aug 2026 06:47:31 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+X-Correlation-Id: 97d700c8
+Deprecation: true
+Sunset: Thu, 31 Dec 2026 00:00:00 GMT
+Link: <http://localhost:5103/api/v2/courses>; rel="successor-version"
+X-Audit: User=anonymous
+api-supported-versions: 1.0, 2.0
+
+{
+  "items": [
+    {
+      "id": 4,
+      "code": "CSE-201",
+      "title": "ASP.NET Core Fundamentals",
+      "maxCapacity": 28,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 14,
+      "code": "DAT-201",
+      "title": "Advanced SQL and Indexing",
+      "maxCapacity": 26,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 7,
+      "code": "CSE-301",
+      "title": "Advanced Web API Patterns",
+      "maxCapacity": 24,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 9,
+      "code": "CSE-303",
+      "title": "Angular Advanced",
+      "maxCapacity": 24,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 8,
+      "code": "CSE-302",
+      "title": "Angular Fundamentals",
+      "maxCapacity": 26,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 22,
+      "code": "AI-101",
+      "title": "Applied Machine Learning",
+      "maxCapacity": 20,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 6,
+      "code": "CSE-203",
+      "title": "Building RESTful Web APIs",
+      "maxCapacity": 28,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 17,
+      "code": "ARC-201",
+      "title": "Cloud-Native Architecture",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 19,
+      "code": "DEV-201",
+      "title": "Continuous Delivery Pipelines",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 21,
+      "code": "MOB-201",
+      "title": "Cross-Platform Mobile",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 15,
+      "code": "DAT-202",
+      "title": "Data Modelling for the Web",
+      "maxCapacity": 26,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 13,
+      "code": "DAT-101",
+      "title": "Database Design Foundations",
+      "maxCapacity": 30,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 25,
+      "code": "UX-201",
+      "title": "Design Systems and Tokens",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 18,
+      "code": "DEV-101",
+      "title": "DevOps Foundations",
+      "maxCapacity": 24,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 5,
+      "code": "CSE-202",
+      "title": "Entity Framework Core and PostgreSQL",
+      "maxCapacity": 28,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 10,
+      "code": "CSE-304",
+      "title": "Full-Stack Integration",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 23,
+      "code": "AI-201",
+      "title": "Generative AI for Developers",
+      "maxCapacity": 18,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 3,
+      "code": "CSE-103",
+      "title": "Git and Collaborative Workflows",
+      "maxCapacity": 25,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 20,
+      "code": "MOB-101",
+      "title": "Mobile App Foundations",
+      "maxCapacity": 24,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 12,
+      "code": "CSE-306",
+      "title": "Security and Authentication",
+      "maxCapacity": 20,
+      "enrollmentCount": 0
+    }
+  ],
+  "totalCount": 26,
+  "page": 1,
+  "pageSize": 20,
+  "totalPages": 2,
+  "hasNext": true,
+  "hasPrevious": false
+}
+
+
+=== V2 Courses — GET /api/v2/courses ===
+
+curl -i "http://localhost:5103/api/v2/courses"
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Fri, 14 Aug 2026 06:48:14 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+X-Correlation-Id: ff141d80
+X-Audit: User=anonymous
+api-supported-versions: 1.0, 2.0
+
+{
+  "data": [
+    {
+      "id": 4,
+      "title": "ASP.NET Core Fundamentals",
+      "code": "CSE-201",
+      "maxCapacity": 28,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 14,
+      "title": "Advanced SQL and Indexing",
+      "code": "DAT-201",
+      "maxCapacity": 26,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 7,
+      "title": "Advanced Web API Patterns",
+      "code": "CSE-301",
+      "maxCapacity": 24,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 9,
+      "title": "Angular Advanced",
+      "code": "CSE-303",
+      "maxCapacity": 24,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 8,
+      "title": "Angular Fundamentals",
+      "code": "CSE-302",
+      "maxCapacity": 26,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 22,
+      "title": "Applied Machine Learning",
+      "code": "AI-101",
+      "maxCapacity": 20,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 6,
+      "title": "Building RESTful Web APIs",
+      "code": "CSE-203",
+      "maxCapacity": 28,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 17,
+      "title": "Cloud-Native Architecture",
+      "code": "ARC-201",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 19,
+      "title": "Continuous Delivery Pipelines",
+      "code": "DEV-201",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 21,
+      "title": "Cross-Platform Mobile",
+      "code": "MOB-201",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 15,
+      "title": "Data Modelling for the Web",
+      "code": "DAT-202",
+      "maxCapacity": 26,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 13,
+      "title": "Database Design Foundations",
+      "code": "DAT-101",
+      "maxCapacity": 30,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 25,
+      "title": "Design Systems and Tokens",
+      "code": "UX-201",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 18,
+      "title": "DevOps Foundations",
+      "code": "DEV-101",
+      "maxCapacity": 24,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 5,
+      "title": "Entity Framework Core and PostgreSQL",
+      "code": "CSE-202",
+      "maxCapacity": 28,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 10,
+      "title": "Full-Stack Integration",
+      "code": "CSE-304",
+      "maxCapacity": 22,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 23,
+      "title": "Generative AI for Developers",
+      "code": "AI-201",
+      "maxCapacity": 18,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 3,
+      "title": "Git and Collaborative Workflows",
+      "code": "CSE-103",
+      "maxCapacity": 25,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 20,
+      "title": "Mobile App Foundations",
+      "code": "MOB-101",
+      "maxCapacity": 24,
+      "enrollmentCount": 0
+    },
+    {
+      "id": 12,
+      "title": "Security and Authentication",
+      "code": "CSE-306",
+      "maxCapacity": 20,
+      "enrollmentCount": 0
+    }
+  ],
+  "meta": {
+    "totalCount": 26,
+    "page": 1,
+    "pageSize": 20,
+    "totalPages": 2,
+    "hasNext": true,
+    "hasPrevious": false
+  },
+  "links": {
+    "self": "/api/v2/courses?page=1&pageSize=20",
+    "next": "/api/v2/courses?page=2&pageSize=20",
+    "prev": null,
+    "enroll": "/api/v2/enrollments"
+  }
+}
+
+
+============================================================
+STEP 10 — TEST 1
+Valid enrollment
+Expected: 201 Created
+============================================================
+
+curl -i -X POST "http://localhost:5103/api/v2/enrollments" \
+-H "Content-Type: application/json" \
+-d '{"studentId":1,"courseCode":"CSE-201"}'
+
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+Date: Tue, 18 Aug 2026 01:48:57 GMT
+Server: Kestrel
+Location: http://localhost:5103/api/v2/enrollments/1/schedule
+Transfer-Encoding: chunked
+X-Correlation-Id: a885c8e5
+X-Audit: User=anonymous
+api-supported-versions: 1.0, 2.0
+
+{"enrollmentId":32,"studentId":1,"courseCode":"CSE-201"}
+
+
+============================================================
+STEP 10 — TEST 2
+Invalid course-code format
+Expected: 400 Bad Request
+Expected Content-Type: application/problem+json
+============================================================
+
+curl -i -X POST "http://localhost:5103/api/v2/enrollments" \
+-H "Content-Type: application/json" \
+-d '{"studentId":1,"courseCode":"invalid"}'
+
+HTTP/1.1 400 Bad Request
+Content-Type: application/problem+json
+Date: Tue, 18 Aug 2026 07:50:44 GMT
+Server: Kestrel
+Cache-Control: no-cache,no-store
+Expires: -1
+Pragma: no-cache
+Transfer-Encoding: chunked
+api-supported-versions: 1.0, 2.0
+
+{"title":"Validation failed","status":400,"detail":"One or more fields are invalid. See errors for details.","instance":"/api/v2/enrollments","errors":{"CourseCode":["Course code must follow the format XXX-000 (e.g., CSE-101)."]}}
+
+
+============================================================
+STEP 10 — TEST 3
+Non-existent course code
+Expected: 404 Not Found
+============================================================
+
+curl -i -X POST "http://localhost:5103/api/v2/enrollments" \
+-H "Content-Type: application/json" \
+-d '{"studentId":1,"courseCode":"ZZZ-999"}'
+
+HTTP/1.1 404 Not Found
+Content-Type: application/problem+json; charset=utf-8
+Date: Tue, 18 Aug 2026 07:19:44 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+X-Correlation-Id: 803af231
+X-Audit: User=anonymous
+api-supported-versions: 1.0, 2.0
+
+{"type":"https://tms.local/errors/course_not_found","title":"Enrollment rejected","status":404,"detail":"Course 'ZZZ-999' was not found.","traceId":"00-f7eb165d65987dcb442c7bad6ed044c8-342219ddb26c8ff7-00"}
+
+
+============================================================
+STEP 10 — TEST 4
+Duplicate enrollment
+Expected: 409 Conflict
+============================================================
+
+curl -i -X POST "http://localhost:5103/api/v2/enrollments" \
+-H "Content-Type: application/json" \
+-d '{"studentId":1,"courseCode":"CSE-201"}'
+
+HTTP/1.1 409 Conflict
+Content-Type: application/problem+json; charset=utf-8
+Date: Tue, 18 Aug 2026 07:20:20 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+X-Correlation-Id: 3f0a5cdc
+X-Audit: User=anonymous
+api-supported-versions: 1.0, 2.0
+
+{"type":"https://tms.local/errors/already_enrolled","title":"Enrollment rejected","status":409,"detail":"Student 1 is already enrolled in CSE-201.","traceId":"00-c199c23ca44c2bb6d64570dccf2d8736-d074e224af66570c-00"}
+
+
+============================================================
+TEST COMMAND STATUS
+============================================================
+
+dotnet test
+
+Restore succeeded with 1 warning(s) in 0.5s
+/Users/helinahailu/TMSAPI/TmsApi.Api/TmsApi.Api.csproj : warning NU1903: Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc
+
+Build succeeded with 1 warning(s) in 0.6s
+
+
+============================================================
+MEDIATR LOGGING EVIDENCE
+============================================================
+
+Request:
+POST /api/v2/enrollments
+Body:
+{"studentId":1,"courseCode":"invalid"}
+
+API response:
+HTTP/1.1 400 Bad Request
+Content-Type: application/problem+json
+
+Relevant API log lines:
+
+info: TmsApi.Application.Behaviors.LoggingBehavior[0]
+      Handling EnrollStudentCommand (cid=659d0dc1752df3ae10438798e144099b)
+
+fail: TmsApi.Application.Behaviors.LoggingBehavior[0]
+      Failed EnrollStudentCommand after 1ms (cid=659d0dc1752df3ae10438798e144099b)
+
+FluentValidation.ValidationException: Validation failed:
+ -- CourseCode: Course code must follow the format XXX-000 (e.g., CSE-101). Severity: Error
+
+The Handling and Failed log entries share the same CorrelationId:
+659d0dc1752df3ae10438798e144099b

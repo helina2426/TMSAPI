@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Routing;
 using TmsApi.Application.Interfaces;
 using TmsApi.Application.Dtos;
 
+
 namespace TmsApi.Api.Controllers;
 
 [ApiController]
@@ -12,6 +13,7 @@ namespace TmsApi.Api.Controllers;
 [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
 public class CoursesController(
     ICourseService courseService,
+    ICachedCourseService cachedCourseService,
     LinkGenerator linkGenerator) : ControllerBase
 {
 
@@ -124,12 +126,14 @@ public async Task<IActionResult> CreateCourse(
         });
     }
 
-    var result = await courseService.CreateAsync(request, ct);
+   var result = await courseService.CreateAsync(request, ct);
 
-    return CreatedAtAction(
-        nameof(GetCourseById),
-        new { id = result.Id },
-        result);
+await cachedCourseService.InvalidateCourseCacheAsync(ct);
+
+return CreatedAtAction(
+    nameof(GetCourseById),
+    new { id = result.Id },
+    result);
 }
 
 
